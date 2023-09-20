@@ -1,60 +1,51 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matrix Arka Plan ve Geri Sayım</title>
+    <style>
+        body {
+            background-color: black;
+            color: green;
+            font-family: 'Courier New', monospace;
+            overflow: hidden;
+            margin: 0;
+        }
+        .matrix-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 24px;
+        }
+    </style>
+</head>
+<body>
+    <div class="matrix-text">
+    </div>
 
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Örnek</title>
-    </head>
+    <script>
+        const countDownDate = new Date("2023-10-01").getTime();
 
-    <body>
-        <hr>
-        <p>[00:32] X: **** işe yarar sanar mısın?</p>
-        <p>[00:32] ?: Denemekten zarar gelmez.</p>
-        <p>[00:32] X: İyide fazla abartmıyor musun?</p>
-        <hr>
-        <p>[00:33] ?: Neyi abartıcam? az bile! böyle düşünecek isen neden çalışmayı kabul ettin?!</p>
-        <p>[00:33] X: Evet ama bu fazla! Biraz büyü artık.</p>
-        <p>[00:33] ?: NE YAPICAĞIMI BANA SÖYLEME!!</p>
-        <!--[00:34  ] X: Kendinden utan biraz! bunun sonucunu biliyor mus.. HEY! NAPIYORSUN!?-->
-        <hr>
-        <p>[00:36] ?: BÖYLE SAÇMA SORULARINA AYIRICAK VAKTİM YOK! S*KTİR GİT BAŞKA YERE O ZAMAN!</p>
-        <p>[00:36] X: Kes sunu! iyice kendin saçmaladın!</p>
+        const countdown = setInterval(function() {
+            const now = new Date().getTime();
+            const distance = countDownDate - now;
 
-        <hr>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <hr>
-        <p>[GİRİŞ-01]: Cesede yazılım kalp verme deneyi:</p>
-        Amaç basit, Ölü birini içinde yazılım olan bir kalp vermek.
-        <br>
-        Saçma görünebilir, ama tabikide bu bir deney.
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-        <br>
-        <br>
-        <br>
+            const countdownText = `${days}g ${hours}s ${minutes}d ${seconds}s`;
 
-        [SONUÇ]: Ceset yok oldu.
+            document.querySelector(".matrix-text").textContent = countdownText;
 
-        <hr>
-    </body>
-
+            if (distance < 0) {
+                clearInterval(countdown);
+                document.querySelector(".matrix-text").textContent = "Süre Doldu!";
+            }
+        }, 1000);
+    </script>
+</body>
 </html>
