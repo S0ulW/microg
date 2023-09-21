@@ -19,6 +19,9 @@
             transform: translate(-50%, -50%);
             font-size: 24px;
         }
+        .sure-doldu {
+            color: red;
+        }
     </style>
 </head>
 <body>
@@ -39,11 +42,13 @@
 
             const countdownText = `${days}g ${hours}s ${minutes}d ${seconds}s`;
 
-            document.querySelector(".matrix-text").textContent = countdownText;
+            const matrixText = document.querySelector(".matrix-text");
+            matrixText.textContent = countdownText;
 
             if (distance < 0) {
                 clearInterval(countdown);
-                document.querySelector(".matrix-text").textContent = "Süre Doldu!";
+                matrixText.textContent = "Zaman tükendi... :)";
+                matrixText.classList.add("sure-doldu");
             }
         }, 1000);
     </script>
